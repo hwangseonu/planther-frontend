@@ -3,14 +3,6 @@ body {
   padding: 0;
 }
 
-.bg-cal {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background: url("https://elbauldelcodigo.com/img/diferencia-fechas-oracle.png") no-repeat center center fixed;
-  background-size: cover;
-}
-
 .gray {
   background-color: rgba(0, 0, 0, 0.5) !important;
 }

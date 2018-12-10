@@ -73,7 +73,7 @@ class Header extends Component {
     return (
       <Navbar dark={true} fixed={'top'}>
         <Container>
-          <NavbarBrand href={'index.html'}>Class room calendar</NavbarBrand>
+          <NavbarBrand href={'/'}>Class room calendar</NavbarBrand>
           {items}
         </Container>
       </Navbar>

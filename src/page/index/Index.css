@@ -1,0 +1,36 @@
+#form-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#login {
+  position: fixed;
+  margin: 15% auto;
+  left: 0;
+  right: 0
+}
+
+#register {
+  position: fixed;
+  margin: 15% auto;
+  left: 0;
+  right: 0
+}
+
+.index {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-cal {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("https://elbauldelcodigo.com/img/diferencia-fechas-oracle.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}

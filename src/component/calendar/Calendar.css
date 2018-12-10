@@ -1,0 +1,16 @@
+.calendar-header {
+  text-align: center;
+}
+
+.day {
+  width: 10vw;
+  height: 10vw;
+}
+
+.sun {
+  color: red;
+}
+
+.sat {
+  color: blue;
+}

@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
-import Header from './component/header/Header';
-import Login from './component/login/Login';
-import Register from './component/register/Register';
-import Main from "./component/main/Main";
-
-import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom';
+import Index from './page/index/Index';
+import Calendar from "./page/calendar/Calendar";
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div id={'form-wrapper'} className={'hidden'}>
-          <Login className={'hidden'}/>
-          <Register className={'hidden'}/>
-        </div>
-        <Header/>
-        <Main/>
+      <div id={'App'}>
+        <BrowserRouter>
+          <Route path={'/'} component={Index} exact/>
+        </BrowserRouter>
+        <BrowserRouter>
+          <Route path={'/calendar'} component={Calendar} exact/>
+        </BrowserRouter>
       </div>
     );
   }
