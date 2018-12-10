@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Form, FormGroup, Input, Button} from 'reactstrap';
-import cookie from 'react-cookies';
 import axios from 'axios';
 
 import './Register.css';
@@ -24,9 +23,18 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  onLoginClick(event) {
+    event.preventDefault();
+    document.getElementById('register').classList.add('hidden');
+    document.getElementById('login').classList.remove('hidden');
+    document.getElementById('form-wrapper').classList.add('gray');
+    document.getElementById('form-wrapper').classList.remove('hidden');
+  }
+
   onCancelClick(event) {
     document.getElementById('register').classList.add('hidden');
-    document.getElementById('root').classList.remove('gray');
+    document.getElementById('form-wrapper').classList.remove('gray');
+    document.getElementById('form-wrapper').classList.add('hidden');
   }
 
   onSubmit(event) {
@@ -76,13 +84,6 @@ class Register extends Component {
     });
   }
 
-  onLoginClick(event) {
-    event.preventDefault();
-    document.getElementById('register').classList.add('hidden');
-    document.getElementById('login').classList.remove('hidden');
-    document.getElementById('root').classList.add('gray')
-  }
-
   render() {
     return (
       <div id={'register'} className={this.props.className}>
@@ -112,7 +113,7 @@ class Register extends Component {
             <Button type={'reset'} color={'danger'} className={'w-50 form-control'}
                     onClick={this.onCancelClick}>Cancel</Button>
             <Button type={'submit'} color={'primary'} className={'w-50 form-control'}>Register</Button>
-            <a id={'SignUp'} onClick={this.onLoginClick}>로그인</a>
+            <a href={'#'} id={'SignUp'} onClick={this.onLoginClick}>로그인</a>
           </Form>
         </div>
       </div>

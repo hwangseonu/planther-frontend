@@ -43,7 +43,8 @@ class Header extends Component {
     }
     event.preventDefault();
     document.getElementById('login').classList.remove('hidden');
-    document.getElementById('root').classList.add('gray')
+    document.getElementById('form-wrapper').classList.add('gray');
+    document.getElementById('form-wrapper').classList.remove('hidden');
   }
 
   onLogoutClick(event) {
@@ -58,13 +59,13 @@ class Header extends Component {
     if (this.state.username) {
       items = (
         <NavItem tag={'div'} className={'navbar-right'}>
-          <a className={'header-menu'} id={'SignOut'} onClick={this.onLogoutClick}>로그아웃</a>
+          <a href={'#'} className={'header-menu'} id={'SignOut'} onClick={this.onLogoutClick}>로그아웃</a>
         </NavItem>
       )
     } else {
       items = (
         <NavItem tag={'div'} className={'navbar-right'}>
-          <a className={'header-menu'} id={'SignIn'} onClick={this.onLoginClick}>로그인</a>
+          <a href={'#'} className={'header-menu'} id={'SignIn'} onClick={this.onLoginClick}>로그인</a>
         </NavItem>
       );
     }

@@ -14,6 +14,10 @@
   animation-fill-mode: forwards;
 }
 
+.navbar a {
+  color: #FFF !important;
+  text-decoration: none !important;
+}
 
 @keyframes going-bigger {
   from {
