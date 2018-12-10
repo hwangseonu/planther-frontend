@@ -35,7 +35,7 @@ class Login extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:8080/auth', {
+    axios.post('https://class-room-calendar.herokuapp.com/auth', {
       username: this.state.username,
       password: this.state.password
     }).then(res => {

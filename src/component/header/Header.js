@@ -18,7 +18,7 @@ class Header extends Component {
 
   componentDidMount() {
     if (cookie.load('JWT')) {
-      axios.get('http://localhost:8080/users', {
+      axios.get('https://class-room-calendar.herokuapp.com/users', {
         headers: {
           Authorization: 'Bearer ' + cookie.load('JWT')
         }

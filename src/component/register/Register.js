@@ -39,7 +39,7 @@ class Register extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:8080/users', {
+    axios.post('https://class-room-calendar.herokuapp.com/users', {
       username: this.state.username,
       password: this.state.password,
       grade: this.state.grade,
