@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import cookie from 'react-cookies';
 import {Table} from 'reactstrap';
 
+import Day from '../day/Day';
+
 import './Calendar.css';
 
 const Utils = {
@@ -30,11 +32,7 @@ class Calendar extends Component {
       alert('로그인 후 이용해 주세요!');
       window.location.href = '/';
     }
-  }
 
-  onClick(event) {
-    let day = event.target.classList.item(1);
-    console.log(day.substring(3, day.length));
   }
 
   render() {
@@ -50,7 +48,7 @@ class Calendar extends Component {
 
     let c = 1;
     for (let i = Utils.getDayOfWeek(year, month, 1); i < 7; i++) {
-      tmp.push(<th onClick={this.onClick} className={'day day' + c +' ' + (i === 0 ? 'sun ' : '') + (i === 6 ? 'sat' : '')}>{c}</th>);
+      tmp.push(<Day year={year} month={month} day={c} className={(i === 0 ? 'sun ' : '') + (i === 6 ? 'sat' : '')} />);
       c++;
     }
 
@@ -59,7 +57,7 @@ class Calendar extends Component {
     tmp = [];
     let i = 1;
     for (c; c <= Utils.getDays(year, month); c++) {
-      tmp.push(<th onClick={this.onClick} className={'day day' + c +' ' + (i % 7 === 1 ? 'sun ' : '') + (i % 7 === 0 ? 'sat' : '')}>{c}</th>);
+      tmp.push(<Day year={year} month={month} day={c} className={(i % 7 === 1 ? 'sun ' : '') + (i % 7 === 0 ? 'sat' : '')}/>);
       if (i % 7 === 0) {
         tbody.push(<tr>{tmp}</tr>);
         tmp = [];
