@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Jumbotron, Container, Button} from 'reactstrap';
+import {Container} from 'reactstrap';
 
 import './Main.css';
 
@@ -7,17 +7,20 @@ class Main extends Component {
 
   render() {
     return (
-      <div id={'main'}>
-        <Jumbotron>
+      <section id={'main-section'}>
+        <div className={'gray main'}>
           <Container>
             <h1 className={'title'}>Planther</h1>
-            <p>"함께 채워가는 계획. Plan together"</p>
-            <Button color={'primary'} className={'btn-lg'}>
+            <p className={'description'}>"함께 채워가는 계획. Plan together"</p>
+            <a href={'#'} className={'btn btn-primary btn-lg'}>
               Go to calendar >>
-            </Button>
+            </a>
           </Container>
-        </Jumbotron>
-      </div>
+        </div>
+        <div className={'white'}>
+
+        </div>
+      </section>
     )
   }
 
