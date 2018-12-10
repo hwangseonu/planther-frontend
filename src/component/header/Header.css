@@ -7,3 +7,19 @@
 .header-menu {
   margin-right: 5vw;
 }
+
+.header-menu:hover {
+  animation-name: going-bigger;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes going-bigger {
+  from {
+    font-size: 16px;
+  }
+  to {
+    font-size: 18px;
+  }
+}

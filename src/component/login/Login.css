@@ -1,0 +1,14 @@
+#login {
+  background: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg") no-repeat center;
+  background-size: cover;
+  padding: 1em;
+  text-align: center;
+  width: 600px;
+  border-radius: 10px;
+
+}
+
+#login-panel {
+  padding: 2em;
+  background-color: #FFFFFF;
+}

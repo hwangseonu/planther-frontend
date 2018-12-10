@@ -13,27 +13,43 @@ class Header extends Component {
       grade: null,
       cls: null,
       number: null
-    }
+    };
   }
 
   componentDidMount() {
     if (cookie.load('JWT')) {
-      axios.get('https://class-room-calendar.herokuapp.com/users', {
-        Authorization: cookie.load('JWT')
-      }).then(res => {
-        if (res.status === 200) {
-          const {username, grade, cls, number} = res.data;
-          this.setState({
-            username: username,
-            grade: grade,
-            cls: cls,
-            number: number
-          })
-        } else {
-          cookie.remove('JWT', {path: '/'})
+      axios.get('http://localhost:8080/users', {
+        headers: {
+          Authorization: 'Bearer ' + cookie.load('JWT')
         }
+      }).then(res => {
+        const {username, grade, cls, number} = res.data;
+        this.setState({
+          username: username,
+          grade: grade,
+          cls: cls,
+          number: number
+        })
+      }).catch(e => {
+        cookie.remove('JWT', {path: '/'});
       })
     }
+  }
+
+  onLoginClick(event) {
+    if (!document.getElementById('login').classList.contains('hidden') || !document.getElementById('register').classList.contains('hidden')) {
+      event.preventDefault();
+      return;
+    }
+    event.preventDefault();
+    document.getElementById('login').classList.remove('hidden');
+    document.getElementById('root').classList.add('gray')
+  }
+
+  onLogoutClick(event) {
+    cookie.remove('JWT', {path: '/'});
+    window.location.href = '/';
+    alert('로그아웃 되었습니다.');
   }
 
   render() {
@@ -42,14 +58,13 @@ class Header extends Component {
     if (this.state.username) {
       items = (
         <NavItem tag={'div'} className={'navbar-right'}>
-          <span className={'header-menu'} id={'SignOut'}>로그아웃</span>
+          <a className={'header-menu'} id={'SignOut'} onClick={this.onLogoutClick}>로그아웃</a>
         </NavItem>
       )
     } else {
       items = (
         <NavItem tag={'div'} className={'navbar-right'}>
-          <span className={'header-menu'} id={'SignIn'}>로그인</span>
-          <span className={'header-menu'} id={'SignUp'}>회원가입</span>
+          <a className={'header-menu'} id={'SignIn'} onClick={this.onLoginClick}>로그인</a>
         </NavItem>
       );
     }
