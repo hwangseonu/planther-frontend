@@ -59,6 +59,7 @@ class Header extends Component {
     if (this.state.username) {
       items = (
         <NavItem tag={'div'} className={'navbar-right'}>
+          <a href={'#'} className={'header-menu'} id={'profile'}>안녕하세요. {this.state.username}님</a>
           <a href={'#'} className={'header-menu'} id={'SignOut'} onClick={this.onLogoutClick}>로그아웃</a>
         </NavItem>
       )

@@ -9,7 +9,7 @@
 }
 
 .assignment {
-  background-color: rgba(0, 125, 125, 0.3);
+  background-color: rgba(0, 255, 255, 0.3);
 }
 
 .right {
@@ -17,5 +17,5 @@
 }
 
 .exists {
-  background-color: rgba(22, 22, 22, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
 }
