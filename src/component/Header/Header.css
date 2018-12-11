@@ -1,0 +1,43 @@
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 50px;
+  background-color: #ffa050;
+  color: #FFFEFE;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  position: absolute;
+  left: 20vw;
+  top: 15px;
+}
+
+.header-menu {
+  font-size: 1em;
+  margin-right: 60px;
+}
+
+.navbar-right {
+  position: absolute;
+  margin-top: 10px;
+  right: 0;
+}
+
+.header-menu:hover {
+  animation-name: being-bigger;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes being-bigger {
+  from {
+    font-size: 1em;
+  }
+
+  to {
+    font-size: 1.5em;
+  }
+}
+
