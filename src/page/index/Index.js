@@ -11,7 +11,7 @@ class Index extends Component {
   render() {
     return (
       <div className="index bg-cal">
-        <div id={'form-wrapper'} className={'hidden'}>
+        <div id={'form-wrapper'} className={'hidden gray'}>
           <Login className={'hidden'}/>
           <Register className={'hidden'}/>
         </div>

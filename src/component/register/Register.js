@@ -11,12 +11,14 @@ class Register extends Component {
     this.state = {
       username: null,
       password: null,
+      name: null,
       grade: null,
       cls: null,
       number: null
     };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeGrade = this.handleChangeGrade.bind(this);
     this.handleChangeCls = this.handleChangeCls.bind(this);
     this.handleChangeNumber = this.handleChangeNumber.bind(this);
@@ -27,13 +29,11 @@ class Register extends Component {
     event.preventDefault();
     document.getElementById('register').classList.add('hidden');
     document.getElementById('login').classList.remove('hidden');
-    document.getElementById('form-wrapper').classList.add('gray');
     document.getElementById('form-wrapper').classList.remove('hidden');
   }
 
   onCancelClick(event) {
     document.getElementById('register').classList.add('hidden');
-    document.getElementById('form-wrapper').classList.remove('gray');
     document.getElementById('form-wrapper').classList.add('hidden');
   }
 
@@ -42,10 +42,10 @@ class Register extends Component {
     axios.post('https://class-room-calendar.herokuapp.com/users', {
       username: this.state.username,
       password: this.state.password,
+      name: this.state.name,
       grade: this.state.grade,
       cls: this.state.cls,
       number: this.state.number
-
     }).then(res => {
       alert('회원가입되었습니다.');
       window.location.href = '/';
@@ -63,6 +63,12 @@ class Register extends Component {
   handleChangePassword(e) {
     this.setState({
       password: e.target.value
+    });
+  }
+
+  handleChangeName(e) {
+    this.setState({
+      name: e.target.value,
     });
   }
 
@@ -87,35 +93,36 @@ class Register extends Component {
   render() {
     return (
       <div id={'register'} className={this.props.className}>
-        <div id={'register-panel'}>
-          <h2>회원가입</h2>
-          <Form id={'register-form'} onSubmit={this.onSubmit}>
-            <FormGroup tag={'div'}>
-              <Input type={'text'} className={'form-control'} placeholder={'Username'}
-                     onChange={this.handleChangeUsername}/>
-            </FormGroup>
-            <FormGroup tag={'div'}>
-              <Input type={'password'} className={'form-control'} placeholder={'Password'}
-                     onChange={this.handleChangePassword}/>
-            </FormGroup>
-            <FormGroup tag={'div'}>
-              <Input type={'text'} className={'form-control'} placeholder={'Grade'}
-                     onChange={this.handleChangeGrade}/>
-            </FormGroup>
-            <FormGroup tag={'div'}>
-              <Input type={'text'} className={'form-control'} placeholder={'Cls'}
-                     onChange={this.handleChangeCls}/>
-            </FormGroup>
-            <FormGroup tag={'div'}>
-              <Input type={'text'} className={'form-control'} placeholder={'Number'}
-                     onChange={this.handleChangeNumber}/>
-            </FormGroup>
-            <Button type={'reset'} color={'danger'} className={'w-50 form-control'}
-                    onClick={this.onCancelClick}>Cancel</Button>
-            <Button type={'submit'} color={'primary'} className={'w-50 form-control'}>Register</Button>
-            <a href={'#'} id={'SignUp'} onClick={this.onLoginClick}>로그인</a>
-          </Form>
-        </div>
+        <h2>회원가입</h2>
+        <Form id={'register-form'} onSubmit={this.onSubmit}>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Username'}
+                   onChange={this.handleChangeUsername}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'password'} className={'form-control'} placeholder={'Password'}
+                   onChange={this.handleChangePassword}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Name'}
+                   onChange={this.handleChangeName}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Grade'}
+                   onChange={this.handleChangeGrade}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Class'}
+                   onChange={this.handleChangeCls}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Number'}
+                   onChange={this.handleChangeNumber}/>
+          </FormGroup>
+          <i onClick={this.onCancelClick} className={'register-close far fa-times-circle fa-3x'}/>
+          <Button type={'submit'} color={'primary'} className={'w-100 form-control'}>Register</Button>
+          <a href={'#'} id={'SignUp'} onClick={this.onLoginClick}>로그인</a>
+        </Form>
       </div>
     )
   }

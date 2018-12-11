@@ -1,12 +1,22 @@
 import React, {Component} from 'react';
 import {Button} from 'reactstrap';
+import axios from 'axios';
 
 import './Info.css';
 
 class Info extends Component {
 
+  constructor(props) {
+    super(props);
+    this.onDelete = this.onDelete.bind(this);
+  }
+
+
   onClick() {
     document.getElementById('cal-info').classList.add('hidden');
+  }
+
+  onDelete() {
   }
 
   render() {

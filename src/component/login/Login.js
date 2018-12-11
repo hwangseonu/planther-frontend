@@ -21,7 +21,6 @@ class Login extends Component {
 
   onCancelClick(event) {
     document.getElementById('login').classList.add('hidden');
-    document.getElementById('form-wrapper').classList.remove('gray');
     document.getElementById('form-wrapper').classList.add('hidden');
   }
 
@@ -29,7 +28,6 @@ class Login extends Component {
     event.preventDefault();
     document.getElementById('register').classList.remove('hidden');
     document.getElementById('login').classList.add('hidden');
-    document.getElementById('form-wrapper').classList.add('gray');
     document.getElementById('form-wrapper').classList.remove('hidden');
   }
 
@@ -61,24 +59,21 @@ class Login extends Component {
   render() {
     return (
       <div id={'login'} className={this.props.className}>
-        <div id={'login-panel'}>
-          <h2>로그인</h2>
-          <p>Please enter your username and password</p>
-          <Form id={'login-form'} onSubmit={this.onSubmit}>
-            <FormGroup tag={'div'}>
-              <Input type={'text'} className={'form-control'} placeholder={'Username'}
-                     onChange={this.handleChangeUsername}/>
-            </FormGroup>
-            <FormGroup tag={'div'}>
-              <Input type={'password'} className={'form-control'} placeholder={'Password'}
-                     onChange={this.handleChangePassword}/>
-            </FormGroup>
-            <Button type={'reset'} color={'danger'} className={'w-50 form-control'}
-                    onClick={this.onCancelClick}>Cancel</Button>
-            <Button type={'submit'} color={'primary'} className={'w-50 form-control'}>Login</Button>
-            <a href={'#'} id={'SignUp'} onClick={this.onRegisterClick}>회원가입</a>
-          </Form>
-        </div>
+        <h2>로그인</h2>
+        <p>Please enter your username and password</p>
+        <Form id={'login-form'} onSubmit={this.onSubmit}>
+          <FormGroup tag={'div'}>
+            <Input type={'text'} className={'form-control'} placeholder={'Username'}
+                   onChange={this.handleChangeUsername}/>
+          </FormGroup>
+          <FormGroup tag={'div'}>
+            <Input type={'password'} className={'form-control'} placeholder={'Password'}
+                   onChange={this.handleChangePassword}/>
+          </FormGroup>
+          <i onClick={this.onCancelClick} className={'login-close far fa-times-circle fa-3x'}/>
+          <Button type={'submit'} color={'primary'} className={'w-100 form-control'}>Login</Button>
+          <a href={'#'} id={'SignUp'} onClick={this.onRegisterClick}>회원가입</a>
+        </Form>
       </div>
     )
   }
