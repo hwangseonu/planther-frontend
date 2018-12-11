@@ -2,9 +2,14 @@
   text-align: center;
 }
 
+.calendar-table {
+  word-wrap: break-word;
+  table-layout: fixed;
+}
+
 .day {
-  width: 10vw;
-  height: 10vw;
+  height: 14vw;
+  overflow: auto;
 }
 
 .sun {
@@ -13,4 +18,10 @@
 
 .sat {
   color: blue;
+}
+
+@media screen and (max-width: 768px) {
+  .day-items, .add-btn {
+    display: none;
+  }
 }

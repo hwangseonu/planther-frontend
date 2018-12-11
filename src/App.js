@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Index from './page/index/Index';
 import Calendar from "./page/calendar/Calendar";
@@ -9,10 +9,10 @@ class App extends Component {
     return (
       <div id={'App'}>
         <BrowserRouter>
-          <Route path={'/'} component={Index} exact/>
-        </BrowserRouter>
-        <BrowserRouter>
-          <Route path={'/calendar'} component={Calendar} exact/>
+          <Fragment>
+            <Route path={'/'} component={Index} exact/>
+            <Route path={'/calendar'} component={Calendar} exact/>
+          </Fragment>
         </BrowserRouter>
       </div>
     );

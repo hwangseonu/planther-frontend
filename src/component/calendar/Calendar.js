@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import cookie from 'react-cookies';
 import {Table} from 'reactstrap';
 
-import Day from '../day/Day';
+import Day from './day/Day';
 
 import './Calendar.css';
 
@@ -42,33 +42,35 @@ class Calendar extends Component {
     let tbody = [];
     let tmp = [];
 
+    let key = 0;
+
     for (let i = 1; i <= Utils.getDayOfWeek(year, month, 1); i++) {
-      tmp.push(<th className={'day blank'}/>);
+      tmp.push(<th key={key++} className={'day blank'}/>);
     }
 
     let c = 1;
     for (let i = Utils.getDayOfWeek(year, month, 1); i < 7; i++) {
-      tmp.push(<Day year={year} month={month} day={c} className={(i === 0 ? 'sun ' : '') + (i === 6 ? 'sat' : '')} />);
+      tmp.push(<Day key={key++} year={year} month={month} day={c} className={(i === 0 ? 'sun ' : '') + (i === 6 ? 'sat' : '')} />);
       c++;
     }
 
-    tbody.push(<tr>{tmp}</tr>);
+    tbody.push(<tr key={key++}>{tmp}</tr>);
 
     tmp = [];
     let i = 1;
     for (c; c <= Utils.getDays(year, month); c++) {
-      tmp.push(<Day year={year} month={month} day={c} className={(i % 7 === 1 ? 'sun ' : '') + (i % 7 === 0 ? 'sat' : '')}/>);
+      tmp.push(<Day key={key++} year={year} month={month} day={c} className={(i % 7 === 1 ? 'sun ' : '') + (i % 7 === 0 ? 'sat' : '')}/>);
       if (i % 7 === 0) {
-        tbody.push(<tr>{tmp}</tr>);
+        tbody.push(<tr key={key++}>{tmp}</tr>);
         tmp = [];
       }
       i++;
     }
 
     for (; tmp.length === 7;) {
-      tmp.push(<th className={'day blank'}/>)
+      tmp.push(<th key={key++} className={'day blank'}/>)
     }
-    tbody.push(<tr>{tmp}</tr>);
+    tbody.push(<tr key={key++}>{tmp}</tr>);
     return (
       <div className={"calendar"}>
         <div className={'calendar-header'}>
