@@ -20,8 +20,27 @@
   color: blue;
 }
 
+#cal-info {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.info-wrapper {
+  position: fixed;
+  margin: 15% auto;
+  width: 600px;
+  left: 0;
+  right: 0
+}
+
 @media screen and (max-width: 768px) {
   .day-items, .add-btn {
     display: none;
+  }
+  .info-wrapper {
+    margin-top: 30vh;
+    width: 100%;
   }
 }

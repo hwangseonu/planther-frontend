@@ -39,7 +39,7 @@ class Day extends Component {
     for (let key in this.state.calendar) {
       const data = this.state.calendar[key];
       items.push(
-        <Item key={`item-key${key++}`} title={data.title} type={data.type}/>
+        <Item key={`item-key${key++}`} title={data.title} content={data.content} username={data.user.username} type={data.type}/>
       );
     }
     return (

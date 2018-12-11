@@ -27,12 +27,11 @@ const Utils = {
 
 class Calendar extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     if (!cookie.load('JWT')) {
       alert('로그인 후 이용해 주세요!');
       window.location.href = '/';
     }
-
   }
 
   render() {
@@ -73,6 +72,7 @@ class Calendar extends Component {
     tbody.push(<tr key={key++}>{tmp}</tr>);
     return (
       <div className={"calendar"}>
+        <div id={'cal-info'} className={'hidden gray'}/>
         <div className={'calendar-header'}>
           <span>{year}</span>
           <h1>{month}</h1>

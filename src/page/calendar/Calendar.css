@@ -4,6 +4,14 @@
   margin-right: auto;
 }
 
+.info {
+  position: fixed;
+  margin: 15% auto;
+  width: 600px;
+  left: 0;
+  right: 0
+}
+
 @media screen and (max-width: 768px) {
   #calendar {
     margin-top: 100px;
