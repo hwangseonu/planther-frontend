@@ -1,4 +1,6 @@
 .calendar {
+  width: 1280px;
+  margin: 15% auto auto;
   cursor: default;
 }
 
@@ -40,7 +42,8 @@
 }
 
 .prev {
-  position: absolute;
+  position: fixed;
+  top: 50%;
   left: 10px;
   font-size: 5em;
   cursor: pointer;
@@ -48,7 +51,8 @@
 }
 
 .next {
-  position: absolute;
+  position: fixed;
+  top: 50%;
   right: 10px;
   font-size: 5em;
   cursor: pointer;
@@ -59,6 +63,21 @@
   animation-name: being-black;
   animation-duration: 300ms;
   animation-fill-mode: forwards;
+}
+
+#info {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 1280px){
+  .calendar {
+    width: 100%;
+  }
 }
 
 @keyframes being-black {

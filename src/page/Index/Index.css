@@ -36,11 +36,7 @@
 .btn-main {
   width: 200px;
   height: 50px;
-  border: none;
-  border-radius: 10px;
   background-color: #ffa050;
-  font-weight: bold;
-  font-size: 1em;
   color: #FFF;
   cursor: pointer;
 }

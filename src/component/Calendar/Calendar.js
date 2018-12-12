@@ -92,7 +92,7 @@ class Calendar extends Component {
           <tr>{items.slice(35, 42)}</tr>
           </tbody>
         </table>
-        <div id={'info'}/>
+        <div id={'info'} className={'hidden'}/>
       </div>
     )
   }

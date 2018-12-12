@@ -34,6 +34,12 @@
   animation-fill-mode: forwards;
 }
 
+@media screen and (max-width: 768px){
+  .profile-menu {
+    display: none;
+  }
+}
+
 @keyframes being-bigger {
   from {
     font-size: 1em;

@@ -55,13 +55,13 @@ class Header extends Component {
   render() {
     const items = (this.state.username) ? (
       <div className={'navbar-right'}>
-        <span id={'profile'} className={'header-menu'}>안녕하세요 {this.state.username}님</span>
-        <span onClick={this.onClickLogout} id={'logout'} className={'header-menu'}>로그아웃</span>
+        <span className={'header-menu profile-menu'}>안녕하세요 {this.state.username}님</span>
+        <span onClick={this.onClickLogout} className={'header-menu logout-menu'}>로그아웃</span>
       </div>
     ): (
       <div className={'navbar-right'}>
-        <span onClick={this.onClickLogin} id={'profile'} className={'header-menu'}>로그인</span>
-        <span onClick={this.onClickRegister} id={'logout'} className={'header-menu'}>회원가입</span>
+        <span onClick={this.onClickLogin} className={'header-menu login-menu'}>로그인</span>
+        <span onClick={this.onClickRegister} className={'header-menu register-menu'}>회원가입</span>
       </div>
     );
 

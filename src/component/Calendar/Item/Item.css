@@ -9,6 +9,14 @@
   background-color: #ffd27e;
 }
 
+.presentation:hover {
+  background-color: #ff9040;
+}
+
 .event {
-  background-color: #ff9378;
+  background-color: #ffA080;
+}
+
+.event:hover {
+  background-color: #ff503f;
 }
