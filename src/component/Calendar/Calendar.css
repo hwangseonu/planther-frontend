@@ -1,0 +1,72 @@
+.calendar {
+  cursor: default;
+}
+
+.calendar-header {
+  text-align: center;
+}
+
+.calendar-header .year {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+}
+
+.table th {
+  width: 100vh;
+}
+
+.table tr th:nth-child(1) {
+  color: red;
+}
+
+.table tr th:nth-child(7) {
+  color: blue;
+}
+
+.table thead th {
+  border-radius: 10px;
+  background-color: rgba(255, 160, 80, 0.3);
+}
+
+.table tbody th {
+  height: 15vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prev {
+  position: absolute;
+  left: 10px;
+  font-size: 5em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.next {
+  position: absolute;
+  right: 10px;
+  font-size: 5em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.prev:hover, .next:hover {
+  animation-name: being-black;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes being-black {
+  from {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  to {
+    color: #000;
+  }
+}

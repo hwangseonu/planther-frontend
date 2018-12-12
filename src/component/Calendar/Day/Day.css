@@ -1,0 +1,40 @@
+.day {
+  height: 100%;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.gray {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-add {
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(255, 160, 80, 0.3);
+  width: 13%;
+  margin-left: 75%;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  animation-name: btn-hover;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@media screen and (max-width: 768px){
+  .day section {
+    display: none;
+  }
+}
+
+@keyframes btn-hover {
+  from {
+    background-color: rgba(255, 160, 80, 0.3);
+  }
+
+  to {
+    background-color: rgba(255, 160, 80, 1);
+  }
+}
