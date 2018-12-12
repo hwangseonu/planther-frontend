@@ -3,6 +3,7 @@
   top: 0;
   width: 100vw;
   height: 50px;
+  line-height: 40px;
   background-color: #ffa050;
   color: #FFFEFE;
   font-weight: bold;
@@ -11,17 +12,19 @@
 .navbar-brand {
   position: absolute;
   left: 20vw;
-  top: 15px;
 }
 
 .header-menu {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
   font-size: 1em;
   margin-right: 60px;
+  cursor: pointer;
 }
 
 .navbar-right {
   position: absolute;
-  margin-top: 10px;
   right: 0;
 }
 
