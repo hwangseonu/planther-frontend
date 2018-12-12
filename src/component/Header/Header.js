@@ -47,7 +47,9 @@ class Header extends Component {
   }
 
   onClickLogout() {
-    cookie.remove('JWT', {path: '/'})
+    cookie.remove('JWT', {path: '/'});
+    window.location.href = '/';
+    alert('로그아웃되었습니다.');
   }
 
   render() {

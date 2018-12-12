@@ -57,3 +57,12 @@
   animation-duration: 300ms;
   animation-fill-mode: forwards;
 }
+
+@media screen and (max-width: 768px){
+  .register {
+    width: 75%;
+  }
+  .register-close {
+    margin-left: 70%;
+  }
+}
