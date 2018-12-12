@@ -11,7 +11,7 @@
 
 .navbar-brand {
   position: absolute;
-  left: 20vw;
+  left: 5vw;
 }
 
 .header-menu {
@@ -25,7 +25,7 @@
 
 .navbar-right {
   position: absolute;
-  right: 0;
+  right: 5vw;
 }
 
 .header-menu:hover {

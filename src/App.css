@@ -1,6 +1,10 @@
 .App {
 }
 
+.hidden {
+  display: none;
+}
+
 a {
   color: #FFF;
   text-decoration: none;

@@ -11,7 +11,6 @@
 .page-title {
   font-size: 3em;
   color: #FFF;
-  cursor: default;
 }
 
 .page-subtitle {
@@ -25,6 +24,7 @@
   height: 60vh;
   background-color: rgba(0, 0, 0, 0.5);
   left: 0;
+  cursor: default;
 }
 
 .page-description {
@@ -33,7 +33,7 @@
   background-color: rgb(255, 255, 255);
 }
 
-.btn {
+.btn-main {
   width: 200px;
   height: 50px;
   border: none;
@@ -42,9 +42,10 @@
   font-weight: bold;
   font-size: 1em;
   color: #FFF;
+  cursor: pointer;
 }
 
-.btn:hover {
+.btn-main:hover {
   animation-name: btn-hover;
   animation-duration: 300ms;
   animation-fill-mode: forwards;
@@ -62,5 +63,14 @@
   }
   to {
     background-color: #ff8428;
+  }
+}
+
+@keyframes close-hover {
+  from {
+    color: rgba(0, 0, 0, 0.3);
+  }
+  to {
+    color: rgba(0, 0, 0, 0.7);
   }
 }
