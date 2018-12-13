@@ -23,7 +23,7 @@ class Register extends Component {
   }
 
   onClickClose() {
-    document.getElementById('register-wrapper').classList.add('hidden');
+    document.getElementById('register').classList.add('hidden');
     document.getElementById('register-form').reset();
   }
 
@@ -68,18 +68,20 @@ class Register extends Component {
 
   render() {
     return (
-      <div id={'register-wrapper'} className={this.props.className}>
-        <div className={'register'}>
-          <i onClick={this.onClickClose} className={'login-close far fa-times-circle fa-2x'}/>
-          <h2>회원가입</h2>
-          <form id={'register-form'} onSubmit={this.onSubmit}>
-            <input onChange={this.onChangeUsername} placeholder={'Username'}/>
-            <input onChange={this.onChangePassword} type={'password'} placeholder={'Password'}/>
-            <input onChange={this.onChangeGrade} placeholder={'Grade'}/>
-            <input onChange={this.onChangeClass} placeholder={'Class'}/>
-            <input onChange={this.onChangeNumber} placeholder={'Number'}/>
-            <button type={'submit'} className={'btn-register'}>회원가입</button>
-          </form>
+      <div id={'register'} className={this.props.className}>
+        <div className={'register-wrapper'}>
+          <div className={'register'}>
+            <i onClick={this.onClickClose} className={'login-close far fa-times-circle fa-2x'}/>
+            <h2>회원가입</h2>
+            <form id={'register-form'} onSubmit={this.onSubmit}>
+              <input onChange={this.onChangeUsername} placeholder={'Username'}/>
+              <input onChange={this.onChangePassword} type={'password'} placeholder={'Password'}/>
+              <input onChange={this.onChangeGrade} placeholder={'Grade'}/>
+              <input onChange={this.onChangeClass} placeholder={'Class'}/>
+              <input onChange={this.onChangeNumber} placeholder={'Number'}/>
+              <button type={'submit'} className={'btn-register'}>회원가입</button>
+            </form>
+          </div>
         </div>
       </div>
     )

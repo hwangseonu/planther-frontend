@@ -39,11 +39,11 @@ class Header extends Component {
   }
 
   onClickLogin() {
-    document.getElementById('login-wrapper').classList.remove('hidden');
+    document.getElementById('login').classList.remove('hidden');
   }
 
   onClickRegister() {
-    document.getElementById('register-wrapper').classList.remove('hidden');
+    document.getElementById('register').classList.remove('hidden');
   }
 
   onClickLogout() {

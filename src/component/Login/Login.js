@@ -20,7 +20,7 @@ class Login extends Component {
 
 
   onClickClose() {
-    document.getElementById('login-wrapper').classList.add('hidden');
+    document.getElementById('login').classList.add('hidden');
     document.getElementById('login-form').reset();
   }
 
@@ -61,15 +61,17 @@ class Login extends Component {
 
   render() {
     return (
-      <div id={'login-wrapper'} className={this.props.className}>
-        <div className={'login'} onSubmit={this.onSubmit}>
-          <i onClick={this.onClickClose} className={'login-close far fa-times-circle fa-2x'}/>
-          <h2>로그인</h2>
-          <form id={'login-form'}>
-            <input onChange={this.onChangeUsername} type={'text'} placeholder={'Username'}/>
-            <input onChange={this.onChangePassword} type={'password'} placeholder={'Password'}/>
-            <button type={'submit'} className={'btn-login'}>로그인</button>
-          </form>
+      <div id={'login'} className={this.props.className}>
+        <div className={'login-wrapper'}>
+          <div className={'login'} onSubmit={this.onSubmit}>
+            <i onClick={this.onClickClose} className={'login-close far fa-times-circle fa-2x'}/>
+            <h2>로그인</h2>
+            <form id={'login-form'}>
+              <input onChange={this.onChangeUsername} type={'text'} placeholder={'Username'}/>
+              <input onChange={this.onChangePassword} type={'password'} placeholder={'Password'}/>
+              <button type={'submit'} className={'btn-login'}>로그인</button>
+            </form>
+          </div>
         </div>
       </div>
     )

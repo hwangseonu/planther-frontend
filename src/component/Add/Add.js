@@ -70,20 +70,22 @@ class Add extends Component {
 
   render() {
     return (
-      <div id={'add-wrapper'}>
-        <i onClick={this.onCloseClick} className={'add-close far fa-times-circle fa-2x'}/>
-        <h1>일정 추가</h1>
-        <form id={'add-form'} onSubmit={this.onSubmit}>
-          <input onChange={this.onTitleChange} placeholder={'일정 제목'}/>
-          <textarea onChange={this.onContentChange} placeholder={'일정 내용'}/>
-          <select defaultValue={''} onChange={this.onSelectType}>
-            <option value={''} disabled={true} hidden={true}>일정 종류</option>
-            <option value={'ASSIGNMENT'}>과제</option>
-            <option value={'PRESENTATION'}>발표</option>
-            <option value={'EVENT'}>행사</option>
-          </select>
-          <button type={'submit'} className={'btn-send'}>추가하기</button>
-        </form>
+      <div className={'add-wrapper'}>
+        <div className={'add'}>
+          <i onClick={this.onCloseClick} className={'add-close far fa-times-circle fa-2x'}/>
+          <h1>일정 추가</h1>
+          <form id={'add-form'} onSubmit={this.onSubmit}>
+            <input onChange={this.onTitleChange} placeholder={'일정 제목'}/>
+            <textarea onChange={this.onContentChange} placeholder={'일정 내용'}/>
+            <select defaultValue={''} onChange={this.onSelectType}>
+              <option value={''} disabled={true} hidden={true}>일정 종류</option>
+              <option value={'ASSIGNMENT'}>과제</option>
+              <option value={'PRESENTATION'}>발표</option>
+              <option value={'EVENT'}>행사</option>
+            </select>
+            <button type={'submit'} className={'btn-send'}>추가하기</button>
+          </form>
+        </div>
       </div>
     )
   }
