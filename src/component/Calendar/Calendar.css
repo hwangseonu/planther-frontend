@@ -15,10 +15,7 @@
 
 .table {
   width: 100%;
-}
-
-.table th {
-  width: 100vh;
+  table-layout: fixed;
 }
 
 .table tr th:nth-child(1) {

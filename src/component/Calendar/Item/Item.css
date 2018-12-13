@@ -4,6 +4,7 @@
   cursor: pointer;
   text-align: center;
   height: 24px;
+  overflow: hidden;
 }
 
 .presentation {

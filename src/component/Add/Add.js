@@ -40,7 +40,10 @@ class Add extends Component {
       }
     }).then(res => {
       alert('등록되었습니다.');
-      console.dir(res.data);
+      window.location.reload();
+    }).catch(e => {
+      alert('오류가 발생했습니다. ' + e.response.status);
+      window.location.reload();
     })
 
   }
