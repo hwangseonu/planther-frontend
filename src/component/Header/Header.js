@@ -13,17 +13,18 @@ class Header extends Component {
       grade: null,
       cls: null,
       number: null,
-    }
+    };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const jwt = cookie.load('JWT');
     if (jwt) {
-      axios.get(`${config.server}/users`, {
-        headers: {
-          Authorization: `Bearer ${jwt}`
-        }
-      }).then(res => {
+      try {
+        const res = await axios.get(`${config.server}/users`, {
+          headers: {
+            Authorization: `Bearer ${jwt}`
+          }
+        });
         const {username, grade, cls, number} = res.data;
         this.setState({
           username: username,
@@ -31,10 +32,10 @@ class Header extends Component {
           cls: cls,
           number: number
         });
-      }).catch(e => {
+      } catch (e) {
         alert(`login error ${e.message}`);
         cookie.remove('JWT', {path: '/'});
-      })
+      }
     }
   }
 
@@ -58,7 +59,7 @@ class Header extends Component {
         <span className={'header-menu profile-menu'}>안녕하세요 {this.state.username}님</span>
         <span onClick={this.onClickLogout} className={'header-menu logout-menu'}>로그아웃</span>
       </div>
-    ): (
+    ) : (
       <div className={'navbar-right'}>
         <span onClick={this.onClickLogin} className={'header-menu login-menu'}>로그인</span>
         <span onClick={this.onClickRegister} className={'header-menu register-menu'}>회원가입</span>

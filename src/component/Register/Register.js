@@ -71,7 +71,7 @@ class Register extends Component {
       <div id={'register'} className={this.props.className}>
         <div className={'register-wrapper'}>
           <div className={'register'}>
-            <i onClick={this.onClickClose} className={'login-close far fa-times-circle fa-2x'}/>
+            <i onClick={this.onClickClose} className={'register-close far fa-times-circle fa-2x'}/>
             <h2>회원가입</h2>
             <form id={'register-form'} onSubmit={this.onSubmit}>
               <input onChange={this.onChangeUsername} placeholder={'Username'}/>

@@ -14,7 +14,7 @@
 }
 
 .login {
-  width: 600px;
+  width: 40vw;
   border-radius: 10px;
   background-color: #FFF;
   padding: 2em;
@@ -37,7 +37,7 @@
 .login-close {
   position: absolute;
   margin-top: 0;
-  margin-left: 580px;
+  margin-left: 38vw;
   color: rgba(0, 0, 0, 0.3);
 }
 
