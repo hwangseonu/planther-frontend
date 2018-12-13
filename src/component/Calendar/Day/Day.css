@@ -2,6 +2,17 @@
   height: 100%;
   border-radius: 10px;
   overflow: auto;
+  padding-right: 5%;
+}
+
+.day span {
+  padding-left: 5%;
+}
+
+.day-header {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .gray {
@@ -10,8 +21,6 @@
 
 .btn-add {
   background-color: rgba(255, 160, 80, 0.3);
-  width: 13%;
-  margin-left: 75%;
   cursor: pointer;
 }
 

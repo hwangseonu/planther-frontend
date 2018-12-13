@@ -39,7 +39,7 @@ class Day extends Component {
     this.state.calendar.map((data, key) => items.push(<Item key={key} data={data}/>));
     return (
       <div className={'day ' + (items.length !== 0 ? 'gray' : '')}>
-        <header>
+        <header className={'day-header'}>
           <span>{this.props.day}</span>
           <button onClick={this.onClickAdd} className={'btn-add'}>+</button>
         </header>
