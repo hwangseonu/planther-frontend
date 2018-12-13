@@ -17,7 +17,7 @@
 }
 
 .add {
-  width: 50vw;
+  width: 600px;
   background-color: #FFFFFF;
   border-radius: 10px;
   padding: 1em;
@@ -26,7 +26,7 @@
 .add-close {
   position: absolute;
   margin-top: 0;
-  margin-left: 48vw;
+  margin-left: 570px;
   color: rgba(0, 0, 0, 0.3);
 }
 
