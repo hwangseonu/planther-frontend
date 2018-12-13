@@ -24,7 +24,10 @@ class Add extends Component {
     event.preventDefault();
     const {title, content, type} = this.state;
 
-    console.log(content);
+    if (!title || !content || !type) {
+      alert('빈 칸이 없어야 합니다.');
+      return;
+    }
 
     const token = cookie.load('JWT');
     axios.post(`${config.server}/calendar`, {
