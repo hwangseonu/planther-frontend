@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import cookie from 'react-cookies';
 import axios from 'axios';
 
 import config from '../../../config';
 import Item from "../Item/Item";
+import Add from "../../Add/Add";
 
 import './Day.css';
 
@@ -12,7 +14,8 @@ class Day extends Component {
     super(props);
     this.state = {
       calendar: []
-    }
+    };
+    this.onClickAdd = this.onClickAdd.bind(this);
   }
 
   componentWillMount() {
@@ -26,6 +29,11 @@ class Day extends Component {
     });
   }
 
+  onClickAdd() {
+    document.getElementById('add').classList.remove('hidden');
+    ReactDOM.render(<Add year={this.props.year} month={this.props.month} day={this.props.day}/>, document.getElementById('add'));
+  }
+
   render() {
     let items = [];
     this.state.calendar.map((data, key) => items.push(<Item key={key} data={data}/>));
@@ -33,7 +41,7 @@ class Day extends Component {
       <div className={'day ' + (items.length !== 0 ? 'gray' : '')}>
         <header>
           <span>{this.props.day}</span>
-          <button className={'btn-add'}>+</button>
+          <button onClick={this.onClickAdd} className={'btn-add'}>+</button>
         </header>
         <section>
           {items}

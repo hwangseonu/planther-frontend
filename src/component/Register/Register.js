@@ -31,7 +31,8 @@ class Register extends Component {
     event.preventDefault();
     document.getElementById('register-form').reset();
     axios.post(`${config.server}/users`, this.state).then(res => {
-      window.location.href = '/'
+      window.location.href = '/';
+      alert('회원가입 되었습니다.');
     }).catch(e => {
       let msg = '';
       switch (e.response.status) {

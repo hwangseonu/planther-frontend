@@ -93,6 +93,7 @@ class Calendar extends Component {
           </tbody>
         </table>
         <div id={'info'} className={'hidden'}/>
+        <div id={'add'} className={'hidden'}/>
       </div>
     )
   }

@@ -3,20 +3,21 @@
   color: #FFFFFF;
   cursor: pointer;
   text-align: center;
+  height: 24px;
 }
 
 .presentation {
-  background-color: #ffd27e;
-}
-
-.presentation:hover {
-  background-color: #ff9040;
+  background-color: #F3CB60;
 }
 
 .event {
-  background-color: #ffA080;
+  background-color: #F5B74D;
 }
 
-.event:hover {
-  background-color: #ff503f;
+.assignment {
+  background-color: #F26D40;
+}
+
+.presentation:hover, .event:hover, .assignment:hover {
+  background-color: #A83738;
 }
