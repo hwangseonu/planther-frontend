@@ -1,1 +1,7 @@
+.App {
+  cursor: default;
+}
 
+.hidden {
+  display: none !important;
+}

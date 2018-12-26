@@ -2,8 +2,13 @@ import React, {Component} from 'react';
 
 import logo from '../../assets/images/logo.svg';
 import './Navbar.css';
+import Login from "../Login/Login";
 
 class Navbar extends Component {
+
+  onLoginClick() {
+    document.getElementById('login-wrapper').classList.remove('hidden');
+  }
 
   render() {
     return (
@@ -15,9 +20,10 @@ class Navbar extends Component {
           </div>
         </a>
         <div className={'navbar-menu'}>
-          <span>로그인</span>
+          <span onClick={this.onLoginClick}>로그인</span>
           <span>회원가입</span>
         </div>
+        <Login/>
       </div>
     )
   }
