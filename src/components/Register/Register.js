@@ -29,9 +29,9 @@ class Register extends Component {
               <input placeholder={'아이디'}/>
               <input placeholder={'비밀번호'} type={'password'}/>
               <input placeholder={'이름'}/>
-              <input placeholder={'학년'} type={'number'}/>
-              <input placeholder={'반'} type={'number'}/>
-              <input placeholder={'번호'} type={'number'}/>
+              <input placeholder={'학년'} type={'number'} min={1} max={3}/>
+              <input placeholder={'반'} type={'number'} min={1} max={4}/>
+              <input placeholder={'번호'} type={'number'} min={1} max={21}/>
               <button type={'submit'}>회원가입</button>
             </form>
           </div>
