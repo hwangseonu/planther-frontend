@@ -38,3 +38,18 @@
   margin-left: 20px;
   cursor: pointer;
 }
+
+.navbar-menu span:hover {
+  animation-name: menu-hover;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes menu-hover {
+  from {
+    font-size: 1em
+  }
+  to {
+    font-size: 1.3em
+  }
+}
