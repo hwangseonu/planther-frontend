@@ -1,0 +1,43 @@
+#index {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("https://elbauldelcodigo.com/img/diferencia-fechas-oracle.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.page-header {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  padding-left: 10%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.btn-cal {
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #FFFFFF;
+  background-color: #F2C61D;
+}
+
+.btn-cal:hover {
+  background-color: #F1942E;
+}
+
+.page-section {
+  height: 70vh;
+  background-color: #FFFFFF;
+}
