@@ -28,10 +28,6 @@ class Login extends Component {
             <form id={'login-form'}>
               <input placeholder={'아이디'}/>
               <input placeholder={'비밀번호'} type={'password'}/>
-              {/*<input placeholder={'이름'}/>*/}
-              {/*<input placeholder={'학년'} type={'number'}/>*/}
-              {/*<input placeholder={'반'} type={'number'}/>*/}
-              {/*<input placeholder={'번호'} type={'number'}/>*/}
               <button type={'submit'}>로그인</button>
             </form>
           </div>
