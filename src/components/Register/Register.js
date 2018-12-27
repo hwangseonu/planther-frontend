@@ -1,8 +1,56 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
+import Loading from "../Loading/Loading";
+import config from '../../config';
 import './Register.css';
 
 class Register extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoad: false,
+      data: {}
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+
+  onSubmit(event) {
+    this.setState({isLoad: true});
+
+    const username = event.target[0].value;
+    const password = event.target[1].value;
+    const name = event.target[2].value;
+    const grade = event.target[3].value;
+    const cls = event.target[4].value;
+    const number = event.target[5].value;
+
+    axios.post(`${config.api}/users`, {
+      username: username,
+      password: password,
+      name: name,
+      grade: parseInt(grade),
+      cls: parseInt(cls),
+      number: parseInt(number)
+    }).then(res => {
+      alert('회원가입되었습니다.');
+      this.setState({isLoad: false});
+    }).catch(e => {
+      let msg = '';
+      try {
+        msg = e.response.data.message;
+      }catch (err) {
+        msg = e.message;
+      }
+      alert('회원가입에 실패했습니다. ' + msg);
+      this.setState({isLoad: false});
+    });
+
+    event.preventDefault();
+    event.target.reset();
+  }
 
   onCloseClick() {
     document.getElementById('register-form').reset();
@@ -19,13 +67,14 @@ class Register extends Component {
   render() {
     return (
       <div onClick={this.onOutClick} id={'register-wrapper'} className={'hidden'}>
+        <Loading visible={this.state.isLoad}/>
         <div className={'register'}>
           <div className={'register-header'}>
             <span className={'register-title'}>회원가입</span>
             <i onClick={this.onCloseClick} className={'register-close far fa-times-circle'}/>
           </div>
           <div className={'register-body'}>
-            <form id={'register-form'}>
+            <form id={'register-form'} onSubmit={this.onSubmit}>
               <input placeholder={'아이디'}/>
               <input placeholder={'비밀번호'} type={'password'}/>
               <input placeholder={'이름'}/>
