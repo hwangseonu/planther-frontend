@@ -1,0 +1,29 @@
+.day-wrapper {
+  height: 100%;
+  border-radius: 10px;
+  padding-top: 2%;
+  overflow: auto;
+}
+
+.gray {
+  background-color: #DDDDDD;
+}
+
+.day-header {
+  display: flex;
+}
+
+.day {
+  flex: 0 0 auto;
+  margin-left: 5%;
+}
+
+.add-plan {
+  margin-left: auto;
+  margin-right: 5%;
+  color: #AAAAAA;
+}
+
+.add-plan:hover {
+  color: #000000;
+}

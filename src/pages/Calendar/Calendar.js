@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from "../../components/Navbar/Navbar";
-
+import Day from '../../components/Day/Day';
 import './Calendar.css';
 
 const Utils = {
@@ -35,7 +35,13 @@ class Calendar extends Component {
 
     let items = [];
     [...Array(Utils.getDayOfWeek(year, month, 1)).keys()].map(i => items.push(<th key={`blank${i}`}/>));
-    [...Array(Utils.getDays(year, month)).keys()].map(i => items.push(<th key={`day${i}`}>{i + 1}</th>));
+    [...Array(Utils.getDays(year, month)).keys()].map(i => items.push(<th key={`day${i}`}>
+      <Day date={{
+        year: year,
+        month: month,
+        day: i + 1
+      }}/>
+    </th>));
 
     return (
       <div id={'calendar'}>
