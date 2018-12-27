@@ -9,6 +9,10 @@
   background-color: #DDDDDD;
 }
 
+.day-wrapper:hover {
+  background-color: #DDDDDD;
+}
+
 .day-header {
   display: flex;
 }
