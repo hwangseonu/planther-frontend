@@ -35,7 +35,7 @@ class Calendar extends Component {
 
     let items = [];
     [...Array(Utils.getDayOfWeek(year, month, 1)).keys()].map(i => items.push(<th key={`blank${i}`}/>));
-    [...Array(Utils.getDays(year, month)).keys()].map(i => items.push(<th key={`day${i}`}/>));
+    [...Array(Utils.getDays(year, month)).keys()].map(i => items.push(<th key={`day${i}`}>{i + 1}</th>));
 
     return (
       <div id={'calendar'}>
