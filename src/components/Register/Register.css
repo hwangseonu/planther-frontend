@@ -59,3 +59,7 @@
   font-size: 1.3em;
   cursor: pointer;
 }
+
+#register-form button:hover {
+  background-color: #F1942E;
+}
