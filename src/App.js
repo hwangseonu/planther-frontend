@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 import './App.css';
 import Index from "./pages/Index/Index";
+import Calendar from "./pages/Calendar/Calendar";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <BrowserRouter>
           <Fragment>
             <Route path={'/'} component={Index} exact/>
+            <Route path={'/calendar/:year/:month'} component={Calendar} exact/>
           </Fragment>
         </BrowserRouter>
       </div>
