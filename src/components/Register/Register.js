@@ -37,7 +37,7 @@ class Register extends Component {
     }).then(res => {
       alert('회원가입되었습니다.');
       this.setState({isLoad: false});
-      document.getElementById('register-wrapper').classList.add('hidden');
+      window.location.href = '/';
     }).catch(e => {
       let msg = '';
       try {

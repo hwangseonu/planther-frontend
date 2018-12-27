@@ -38,11 +38,11 @@ class Login extends Component {
       username: username,
       password: password
     }).then(res => {
-      cookie.save('access', res.data.access);
-      cookie.save('refresh', res.data.refresh);
+      cookie.save('access', res.data.access, {path: '/'});
+      cookie.save('refresh', res.data.refresh, {path: '/'});
       alert('로그인되었습니다.');
-      document.getElementById('login-wrapper').classList.add('hidden');
       this.setState({isLoad: false});
+      window.location.href = '/';
     }).catch(e => {
       let msg = '';
       try {
