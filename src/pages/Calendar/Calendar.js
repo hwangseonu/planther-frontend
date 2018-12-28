@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+import Loading from '../../components/Loading/Loading';
 import Navbar from "../../components/Navbar/Navbar";
 import Day from '../../components/Day/Day';
 import './Calendar.css';
@@ -24,6 +26,17 @@ const Utils = {
 
 class Calendar extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoad: false
+    };
+  }
+
+  componentDidMount() {
+
+  }
+
   render() {
     const year = parseInt(this.props.match.params.year);
     const month = parseInt(this.props.match.params.month);
@@ -45,6 +58,7 @@ class Calendar extends Component {
 
     return (
       <div id={'calendar'}>
+        <Loading visible={this.state.isLoad}/>
         <Navbar/>
         <div className={'calendar'}>
           <div className={'calendar-header'}>
@@ -77,6 +91,7 @@ class Calendar extends Component {
             </table>
           </div>
         </div>
+        <div id={'add'} className={'hidden'}/>
       </div>
     )
   }

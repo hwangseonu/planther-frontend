@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import cookie from 'react-cookies';
 import axios from 'axios';
 
 import config from '../../config';
 import './Day.css';
 import Item from "./Item/Item";
+import AddPlan from "../AddPlan/AddPlan";
 
 class Day extends Component {
 
@@ -13,8 +15,8 @@ class Day extends Component {
     this.state = {
       plans: []
     };
+    this.onAddClick = this.onAddClick.bind(this);
   }
-
 
   componentDidMount() {
     const {year, month, day} = this.props.date;
@@ -25,6 +27,11 @@ class Day extends Component {
     }).then(res => {
       this.setState({plans: res.data});
     });
+  }
+
+  onAddClick() {
+    document.getElementById('add').classList.remove('hidden');
+    ReactDOM.render(<AddPlan date={this.props.date}/>, document.getElementById('add'));
   }
 
   onHover(i) {
@@ -48,7 +55,7 @@ class Day extends Component {
       <div className={'day-wrapper ' + (items.length > 0 ? 'gray' : '')} onMouseOver={this.onHover(day)} onMouseLeave={this.onMouseLeave(day)}>
         <div className={'day-header'}>
           <span className={'day'}>{day}</span>
-          <i className="add-plan hidden fas fa-plus" id={`btn-day${day}`}/>
+          <i onClick={this.onAddClick} className="add-plan hidden fas fa-plus" id={`btn-day${day}`}/>
         </div>
         <div>
           {items}
