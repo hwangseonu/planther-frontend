@@ -92,6 +92,7 @@ class Calendar extends Component {
           </div>
         </div>
         <div id={'addplan'}/>
+        <div id={'info'} />;
       </div>
     )
   }

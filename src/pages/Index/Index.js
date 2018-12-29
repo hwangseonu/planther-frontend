@@ -22,6 +22,9 @@ class Index extends Component {
             </a>
           </div>
         </div>
+        <div className={'page-section'}>
+
+        </div>
       </div>
     )
   }
