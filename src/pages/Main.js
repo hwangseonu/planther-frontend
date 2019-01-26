@@ -22,6 +22,7 @@ const Header = styled.div`
 const TitleWrapper = styled.div`
   margin-left: 12.6vw;
   color: #FFF;
+  cursor: default;
 `;
 
 const Title = styled.p`
@@ -42,6 +43,7 @@ const Button = styled.button`
   border-radius: 30px;
   font-size: 1.3em;
   color: #FFF;
+  cursor: pointer;
 `;
 
 class Main extends Component {
