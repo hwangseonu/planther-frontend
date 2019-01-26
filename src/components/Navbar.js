@@ -41,7 +41,6 @@ const Item = styled.span`
 
 class Navbar extends Component {
 
-
   render() {
     return (
       <Wrapper className={'navbar'}>
