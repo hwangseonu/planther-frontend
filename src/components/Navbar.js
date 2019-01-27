@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import LoginModal from './LoginModal';
+import RegisterModal from './RegisterModal';
 import logo from '../assets/images/logo.svg';
 
 const Wrapper = styled.div`
@@ -58,9 +59,10 @@ class Navbar extends Component {
         </Link>
         <Menu className={'navbar-menu'}>
           <Item style={{marginRight: '20px'}} onClick={() => this.event.emit('show-login')}>로그인</Item>
-          <Item>회원가입</Item>
+          <Item onClick={() => this.event.emit('show-register')}>회원가입</Item>
         </Menu>
         <LoginModal/>
+        <RegisterModal/>
       </Wrapper>
     )
   }

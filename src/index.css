@@ -14,5 +14,10 @@ p {
 }
 
 *:focus {
-   outline-color: #f2c61d;
- }
+  outline-color: #f2c61d;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
