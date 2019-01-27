@@ -73,6 +73,8 @@ const Button = styled.button`
 class LoginModal extends Component {
   state = {
     show: false,
+    username: '',
+    password: ''
   };
 
   constructor(props) {
@@ -97,8 +99,8 @@ class LoginModal extends Component {
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
           <ModalBody>
-            <Input placeholder={'Username'}/>
-            <Input placeholder={'Password'} type={'password'}/>
+            <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
+            <Input placeholder={'Password'} onChange={({target}) => this.setState({password: target.value})} type={'password'}/>
             <Button>로그인</Button>
           </ModalBody>
         </Modal>
