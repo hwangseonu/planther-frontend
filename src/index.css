@@ -12,3 +12,7 @@ p {
   margin: 0;
   padding: 0;
 }
+
+*:focus {
+   outline-color: #f2c61d;
+ }

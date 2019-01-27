@@ -44,6 +44,10 @@ const Button = styled.button`
   font-size: 1.3em;
   color: #FFF;
   cursor: pointer;
+  
+  &:hover {
+    background: #ffd52a;
+  }
 `;
 
 class Main extends Component {
