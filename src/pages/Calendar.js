@@ -68,7 +68,7 @@ class Calendar extends Component {
     [...Array(utils.getDays(year, month)).keys()].map(i => items.push(<Item key={`day${i}`}>{i + 1}</Item>));
 
     return (
-      <div>
+      <div id={'calendar'}>
         <Navbar/>
         <Wrapper>
           <div>
