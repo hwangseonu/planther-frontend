@@ -104,20 +104,21 @@ class LoginModal extends Component {
     this.setState({show: false});
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     const {username, password} = this.state;
     const {dispatch} = this.props;
 
     if (username && password) {
       this.setState({loading: true});
-      dispatch(authActions.login(username, password)).then(res => {
-        this.setState({loading: false});
+      try {
+        await dispatch(authActions.login(username, password));
         alert("로그인되었습니다.");
+        this.setState({loading: false});
         window.location.reload();
-      }).catch(err => {
+      } catch (err) {
         this.setState({loading: false});
         alert("로그인에 실패했습니다.");
-      });
+      }
     } else {
       alert("빈칸이 있습니다.");
     }

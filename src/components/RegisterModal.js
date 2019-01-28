@@ -108,21 +108,22 @@ class RegisterModal extends Component {
     this.setState({show: false});
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     const {dispatch} = this.props;
     const {username, password, name, grade, cls, number} = this.state;
 
     this.setState({loading: true});
 
     if (username && password && name && grade && cls && number) {
-      dispatch(authActions.register(username, password, name, grade, cls, number)).then(res => {
+      try {
+        await dispatch(authActions.register(username, password, name, grade, cls, number));
         this.setState({loading: false});
         alert("회원가입되었습니다.");
         window.location.reload();
-      }).catch(err => {
+      } catch (err) {
         this.setState({loading: false});
         alert("회원가입에 실패했습니다.");
-      });
+      }
     } else {
       alert("빈칸이 있습니다.");
     }
@@ -130,20 +131,26 @@ class RegisterModal extends Component {
 
   render() {
     return this.state.show ? (
-      <Wrapper className={'register-wrapper'} onClick={({target}) => {if (target.classList.contains('register-wrapper')) this.close();}}>
-        { this.state.loading ? <Loading/> : null}
+      <Wrapper className={'register-wrapper'} onClick={({target}) => {
+        if (target.classList.contains('register-wrapper')) this.close();
+      }}>
+        {this.state.loading ? <Loading/> : null}
         <Modal>
           <ModalHeader>
             <ModalTitle>회원가임</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody onKeyPress={(e) => {if (e.key === 'Enter') this.handleSubmit()}}>
+          <ModalBody onKeyPress={(e) => {
+            if (e.key === 'Enter') this.handleSubmit()
+          }}>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
-            <Input placeholder={'Password'} type={'password'} onChange={({target}) => this.setState({password: target.value})}/>
+            <Input placeholder={'Password'} type={'password'}
+                   onChange={({target}) => this.setState({password: target.value})}/>
             <Input placeholder={'Name'} onChange={({target}) => this.setState({name: target.value})}/>
             <Input placeholder={'Grade'} type={'number'} onChange={({target}) => this.setState({grade: target.value})}/>
             <Input placeholder={'Class'} type={'number'} onChange={({target}) => this.setState({cls: target.value})}/>
-            <Input placeholder={'Number'} type={'number'} onChange={({target}) => this.setState({number: target.value})}/>
+            <Input placeholder={'Number'} type={'number'}
+                   onChange={({target}) => this.setState({number: target.value})}/>
             <Button onClick={this.handleSubmit.bind(this)}>회원가입</Button>
           </ModalBody>
         </Modal>
