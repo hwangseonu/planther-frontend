@@ -106,7 +106,7 @@ class RegisterModal extends Component {
     this.setState({show: false});
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     const {dispatch} = this.props;
     const {username, password, name, grade, cls, number} = this.state;
 
@@ -125,7 +125,7 @@ class RegisterModal extends Component {
             <ModalTitle>회원가임</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody onKeyPress={(e) => {if (e.key === 'Enter') this.handleSubmit()}}>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} type={'password'} onChange={({target}) => this.setState({password: target.value})}/>
             <Input placeholder={'Name'} onChange={({target}) => this.setState({name: target.value})}/>

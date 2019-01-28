@@ -102,8 +102,7 @@ class LoginModal extends Component {
     this.setState({show: false});
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit() {
     const {username, password} = this.state;
     const {dispatch} = this.props;
 
@@ -122,7 +121,7 @@ class LoginModal extends Component {
             <ModalTitle>로그인</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody onKeyPress={(e) => {if (e.key === 'Enter') this.handleSubmit()}}>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} onChange={({target}) => this.setState({password: target.value})} type={'password'}/>
             <Button onClick={this.handleSubmit.bind(this)}>로그인</Button>
