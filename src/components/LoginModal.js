@@ -107,8 +107,6 @@ class LoginModal extends Component {
     const {username, password} = this.state;
     const {dispatch} = this.props;
 
-    console.log(username);
-
     if (username && password) {
       dispatch(authActions.login(username, password));
     } else {

@@ -6,11 +6,15 @@ const login = (username, password) => {
   const failure = (error) => ({type: types.LOGIN_FAILURE, error});
 
   return (dispatch) => {
-    axios.post('https://planther-api.herokuapp.com/auth', {username, password}).then(res => {
-      dispatch(success(res.data));
-    }).catch(err => {
-      dispatch(failure(err));
-    })
+    return new Promise((resolve, reject) => {
+      axios.post('https://planther-api.herokuapp.com/auth', {username, password}).then(res => {
+        dispatch(success(res.data));
+        resolve(res);
+      }).catch(err => {
+        dispatch(failure(err));
+        reject(err);
+      });
+    });
   };
 };
 
