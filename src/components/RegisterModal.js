@@ -78,10 +78,19 @@ class RegisterModal extends Component {
   constructor(props) {
     super(props);
     this.close = this.close.bind(this);
+    this.show = this.show.bind(this);
   }
 
   componentDidMount() {
-    this.event.on('show-register', () => this.setState({show: true}));
+    this.event.on('show-register', this.show);
+  }
+
+  componentWillUnmount() {
+    this.event.removeListener('show-register', this.show);
+  }
+
+  show() {
+    this.setState({show: true});
   }
 
   close() {

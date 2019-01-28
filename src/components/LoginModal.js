@@ -80,10 +80,19 @@ class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.close = this.close.bind(this);
+    this.show = this.show.bind(this);
   }
 
   componentDidMount() {
-    this.event.on('show-login', () => this.setState({show: true}));
+    this.event.on('show-login', this.show);
+  }
+
+  componentWillUnmount() {
+    this.event.removeListener('show-login', this.show);
+  }
+
+  show() {
+    this.setState({show: true});
   }
 
   close() {
