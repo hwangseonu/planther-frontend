@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Main from './pages/Main';
+import Calendar from './pages/Calendar';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
         <BrowserRouter>
           <Fragment>
             <Route path={'/'} component={Main} exact/>
+            <Route path={'/calendar'} component={Calendar} exact/>
           </Fragment>
         </BrowserRouter>
       </div>

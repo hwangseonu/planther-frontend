@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
@@ -59,7 +60,9 @@ class Main extends Component {
           <TitleWrapper className={'title-wrapper'}>
             <Title className={'title'}>Planther</Title>
             <Description className={'description'}>소중한 우리들의 일정을 위한 서비스</Description>
-            <Button>Go to calendar</Button>
+            <Link to={'/calendar'}>
+              <Button>Go to calendar</Button>
+            </Link>
           </TitleWrapper>
         </Header>
         <div style={{height: '70vh', background: '#FFF'}}></div>
