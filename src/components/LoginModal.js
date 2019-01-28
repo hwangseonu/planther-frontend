@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
+
+import {authActions} from '../actions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -99,6 +102,20 @@ class LoginModal extends Component {
     this.setState({show: false});
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const {username, password} = this.state;
+    const {dispatch} = this.props;
+
+    console.log(username);
+
+    if (username && password) {
+      dispatch(authActions.login(username, password));
+    } else {
+      alert("빈칸이 있습니다.");
+    }
+  }
+
   render() {
     return this.state.show ? (
       <Wrapper className={'login-wrapper'} onClick={({target}) => {if (target.classList.contains('login-wrapper')) this.close();}}>
@@ -110,7 +127,7 @@ class LoginModal extends Component {
           <ModalBody>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} onChange={({target}) => this.setState({password: target.value})} type={'password'}/>
-            <Button>로그인</Button>
+            <Button onClick={this.handleSubmit.bind(this)}>로그인</Button>
           </ModalBody>
         </Modal>
       </Wrapper>
@@ -118,4 +135,8 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal;
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(LoginModal);
