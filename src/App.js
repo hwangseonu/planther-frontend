@@ -11,7 +11,7 @@ class App extends Component {
         <BrowserRouter>
           <Fragment>
             <Route path={'/'} component={Main} exact/>
-            <Route path={'/calendar'} component={Calendar} exact/>
+            <Route path={'/calendar/:year/:month'} component={Calendar} exact/>
           </Fragment>
         </BrowserRouter>
       </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import Navbar from '../components/Navbar';
 
@@ -53,6 +54,9 @@ const Button = styled.button`
 
 class Main extends Component {
   render() {
+    const year = moment().format('YYYY');
+    const month = parseInt(moment().format('MM'));
+
     return (
       <MainWrapper id={'main'}>
         <Navbar/>
@@ -60,7 +64,7 @@ class Main extends Component {
           <TitleWrapper className={'title-wrapper'}>
             <Title className={'title'}>Planther</Title>
             <Description className={'description'}>소중한 우리들의 일정을 위한 서비스</Description>
-            <Link to={'/calendar'}>
+            <Link to={`/calendar/${year}/${month}`}>
               <Button>Go to calendar</Button>
             </Link>
           </TitleWrapper>

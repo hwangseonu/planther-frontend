@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect, Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
@@ -60,27 +61,69 @@ const Item = styled.th`
   }
 `;
 
+const Prev = styled.i`
+  position: fixed;
+  top: 50%;
+  left: 3%;
+  font-size: 5em;
+  color: #AAA;
+  
+  &:hover {
+    color: #555;
+  }
+`;
+
+const Next = styled.i`
+  position: fixed;
+  top: 50%;
+  right: 3%;
+  font-size: 5em;
+  color: #AAA;
+  
+  &:hover {
+    color: #555;
+  }
+`;
+
 class Calendar extends Component {
   render() {
-    const year = 2019;
-    const month = 1;
+    let {year, month} = this.props.match.params;
+    year = parseInt(year);
+    month = parseInt(month);
+
+    if (year < 0) {
+      return <Redirect to={`/calendar/0/1`}/>
+    }
+    if (month < 1) {
+      return <Redirect to={`/calendar/${year - 1}/${12 + month}`}/>
+    } else if (month > 12) {
+      return <Redirect to={`/calendar/${year + 1}/${month - 12}`}/>
+    }
 
     let items = [];
     [...Array(utils.getDayOfWeek(year, month, 1)).keys()].map(i => items.push(<Item key={`blank${i}`}/>));
     [...Array(utils.getDays(year, month)).keys()].map(i => items.push(<Item key={`day${i}`}>
       <Day date={{
+        year,
+        month,
         day: i + 1
       }}/>
     </Item>));
 
     return (
       <div id={'calendar'}>
+        <Link to={`/calendar/${year}/${month - 1}`}>
+          <Prev className={'fas fa-chevron-left'}/>
+        </Link>
+        <Link to={`/calendar/${year}/${month + 1}`}>
+          <Next className={'fas fa-chevron-right'}/>
+        </Link>
         <Navbar/>
         <Wrapper>
           <div>
             <TitleWrapper>
-              <Year>2019</Year>
-              <Month>1</Month>
+              <Year>{year}</Year>
+              <Month>{month}</Month>
             </TitleWrapper>
             <CalendarTable>
               <thead>
