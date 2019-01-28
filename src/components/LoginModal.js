@@ -134,7 +134,10 @@ class LoginModal extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  const {isLogin} = state.auth;
+  return {
+    isLogin
+  };
 }
 
 export default connect(mapStateToProps)(LoginModal);
