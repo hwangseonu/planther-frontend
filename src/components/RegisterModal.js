@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
+
+import {authActions} from "../actions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,6 +76,12 @@ const Button = styled.button`
 class RegisterModal extends Component {
   state = {
     show: false,
+    username: '',
+    password: '',
+    name: '',
+    grade: '',
+    cls: '',
+    number: ''
   };
 
   constructor(props) {
@@ -97,6 +106,17 @@ class RegisterModal extends Component {
     this.setState({show: false});
   }
 
+  handleSubmit(e) {
+    const {dispatch} = this.props;
+    const {username, password, name, grade, cls, number} = this.state;
+
+    if (username && password && name && grade && cls && number) {
+      dispatch(authActions.register(username, password, name, grade, cls, number)).then(res => alert("회원가입되었습니다."));
+    } else {
+      alert("빈칸이 있습니다.");
+    }
+  }
+
   render() {
     return this.state.show ? (
       <Wrapper className={'register-wrapper'} onClick={({target}) => {if (target.classList.contains('register-wrapper')) this.close();}}>
@@ -106,13 +126,13 @@ class RegisterModal extends Component {
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
           <ModalBody>
-            <Input placeholder={'Username'}/>
-            <Input placeholder={'Password'} type={'password'}/>
-            <Input placeholder={'Name'}/>
-            <Input placeholder={'Grade'} type={'number'}/>
-            <Input placeholder={'Class'} type={'number'}/>
-            <Input placeholder={'Number'} type={'number'}/>
-            <Button>회원가입</Button>
+            <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
+            <Input placeholder={'Password'} type={'password'} onChange={({target}) => this.setState({password: target.value})}/>
+            <Input placeholder={'Name'} onChange={({target}) => this.setState({name: target.value})}/>
+            <Input placeholder={'Grade'} type={'number'} onChange={({target}) => this.setState({grade: target.value})}/>
+            <Input placeholder={'Class'} type={'number'} onChange={({target}) => this.setState({cls: target.value})}/>
+            <Input placeholder={'Number'} type={'number'} onChange={({target}) => this.setState({number: target.value})}/>
+            <Button onClick={this.handleSubmit.bind(this)}>회원가입</Button>
           </ModalBody>
         </Modal>
       </Wrapper>
@@ -120,4 +140,11 @@ class RegisterModal extends Component {
   }
 }
 
-export default RegisterModal;
+function mapStateToProps(state) {
+  const {isLogin} = state.auth;
+  return {
+    isLogin
+  }
+}
+
+export default connect(mapStateToProps)(RegisterModal);
