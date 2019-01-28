@@ -1,5 +1,6 @@
-import * as types from './ActionTypes';
 import axios from 'axios';
+import cookie from 'react-cookies';
+import * as types from './ActionTypes';
 
 const login = (username, password) => {
   const success = (data) => ({type: types.LOGIN_SUCCESS, data});
@@ -8,6 +9,7 @@ const login = (username, password) => {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       axios.post('https://planther-api.herokuapp.com/auth', {username, password}).then(res => {
+        cookie.save('JWT', res.data.access, {path: '/'});
         dispatch(success(res.data));
         resolve(res);
       }).catch(err => {
