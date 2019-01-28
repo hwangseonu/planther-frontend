@@ -37,7 +37,15 @@ const register = (username, password, name, grade, cls, number) => {
   };
 };
 
+const logout = () => {
+  return dispatch => {
+    cookie.remove('JWT');
+    dispatch({type: types.LOGOUT});
+  };
+};
+
 export default {
   login,
-  register
+  register,
+  logout
 };
