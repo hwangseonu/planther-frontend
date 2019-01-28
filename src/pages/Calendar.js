@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import Navbar from '../components/Navbar';
-
 import styled from 'styled-components';
+
+import Navbar from '../components/Navbar';
+import Day from '../components/Day';
+
 import utils from '../utils';
 
 const Wrapper = styled.div`
@@ -65,7 +67,11 @@ class Calendar extends Component {
 
     let items = [];
     [...Array(utils.getDayOfWeek(year, month, 1)).keys()].map(i => items.push(<Item key={`blank${i}`}/>));
-    [...Array(utils.getDays(year, month)).keys()].map(i => items.push(<Item key={`day${i}`}>{i + 1}</Item>));
+    [...Array(utils.getDays(year, month)).keys()].map(i => items.push(<Item key={`day${i}`}>
+      <Day date={{
+        day: i + 1
+      }}/>
+    </Item>));
 
     return (
       <div id={'calendar'}>
