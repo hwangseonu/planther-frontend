@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import {authActions} from "../actions";
+import Loading from "./Loading";
 
 const Wrapper = styled.div`
   display: flex;
@@ -76,6 +77,7 @@ const Button = styled.button`
 class RegisterModal extends Component {
   state = {
     show: false,
+    loading: false,
     username: '',
     password: '',
     name: '',
@@ -110,8 +112,17 @@ class RegisterModal extends Component {
     const {dispatch} = this.props;
     const {username, password, name, grade, cls, number} = this.state;
 
+    this.setState({loading: true});
+
     if (username && password && name && grade && cls && number) {
-      dispatch(authActions.register(username, password, name, grade, cls, number)).then(res => alert("회원가입되었습니다."));
+      dispatch(authActions.register(username, password, name, grade, cls, number)).then(res => {
+        this.setState({loading: false});
+        alert("회원가입되었습니다.");
+        window.location.reload();
+      }).catch(err => {
+        this.setState({loading: false});
+        alert("회원가입에 실패했습니다.");
+      });
     } else {
       alert("빈칸이 있습니다.");
     }
@@ -120,6 +131,7 @@ class RegisterModal extends Component {
   render() {
     return this.state.show ? (
       <Wrapper className={'register-wrapper'} onClick={({target}) => {if (target.classList.contains('register-wrapper')) this.close();}}>
+        { this.state.loading ? <Loading/> : null}
         <Modal>
           <ModalHeader>
             <ModalTitle>회원가임</ModalTitle>

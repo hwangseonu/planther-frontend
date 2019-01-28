@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import {authActions} from '../actions';
+import Loading from "./Loading";
 
 const Wrapper = styled.div`
   display: flex;
@@ -76,6 +77,7 @@ const Button = styled.button`
 class LoginModal extends Component {
   state = {
     show: false,
+    loading: false,
     username: '',
     password: ''
   };
@@ -107,7 +109,15 @@ class LoginModal extends Component {
     const {dispatch} = this.props;
 
     if (username && password) {
-      dispatch(authActions.login(username, password));
+      this.setState({loading: true});
+      dispatch(authActions.login(username, password)).then(res => {
+        this.setState({loading: false});
+        alert("로그인되었습니다.");
+        window.location.reload();
+      }).catch(err => {
+        this.setState({loading: false});
+        alert("로그인에 실패했습니다.");
+      });
     } else {
       alert("빈칸이 있습니다.");
     }
@@ -116,6 +126,7 @@ class LoginModal extends Component {
   render() {
     return this.state.show ? (
       <Wrapper className={'login-wrapper'} onClick={({target}) => {if (target.classList.contains('login-wrapper')) this.close();}}>
+        {this.state.loading ? <Loading/> : null}
         <Modal>
           <ModalHeader>
             <ModalTitle>로그인</ModalTitle>
