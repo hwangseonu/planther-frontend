@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {authActions} from '../actions';
 import Loading from "./Loading";
 
 const Wrapper = styled.div`
@@ -104,26 +102,6 @@ class LoginModal extends Component {
     this.setState({show: false});
   }
 
-  async handleSubmit() {
-    const {username, password} = this.state;
-    const {dispatch} = this.props;
-
-    if (username && password) {
-      this.setState({loading: true});
-      try {
-        await dispatch(authActions.login(username, password));
-        alert("로그인되었습니다.");
-        this.setState({loading: false});
-        window.location.reload();
-      } catch (err) {
-        this.setState({loading: false});
-        alert("로그인에 실패했습니다.");
-      }
-    } else {
-      alert("빈칸이 있습니다.");
-    }
-  }
-
   render() {
     return this.state.show ? (
       <Wrapper className={'login-wrapper'} onClick={({target}) => {if (target.classList.contains('login-wrapper')) this.close();}}>
@@ -133,10 +111,10 @@ class LoginModal extends Component {
             <ModalTitle>로그인</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody onKeyPress={(e) => {if (e.key === 'Enter') this.handleSubmit()}}>
+          <ModalBody>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} onChange={({target}) => this.setState({password: target.value})} type={'password'}/>
-            <Button onClick={this.handleSubmit.bind(this)}>로그인</Button>
+            <Button>로그인</Button>
           </ModalBody>
         </Modal>
       </Wrapper>
@@ -144,11 +122,4 @@ class LoginModal extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {isLogin} = state.auth;
-  return {
-    isLogin
-  };
-}
-
-export default connect(mapStateToProps)(LoginModal);
+export default LoginModal;

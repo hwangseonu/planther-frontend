@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {authActions} from "../actions";
 import Loading from "./Loading";
 
 const Wrapper = styled.div`
@@ -108,27 +106,6 @@ class RegisterModal extends Component {
     this.setState({show: false});
   }
 
-  async handleSubmit() {
-    const {dispatch} = this.props;
-    const {username, password, name, grade, cls, number} = this.state;
-
-    this.setState({loading: true});
-
-    if (username && password && name && grade && cls && number) {
-      try {
-        await dispatch(authActions.register(username, password, name, grade, cls, number));
-        this.setState({loading: false});
-        alert("회원가입되었습니다.");
-        window.location.reload();
-      } catch (err) {
-        this.setState({loading: false});
-        alert("회원가입에 실패했습니다.");
-      }
-    } else {
-      alert("빈칸이 있습니다.");
-    }
-  }
-
   render() {
     return this.state.show ? (
       <Wrapper className={'register-wrapper'} onClick={({target}) => {
@@ -140,9 +117,7 @@ class RegisterModal extends Component {
             <ModalTitle>회원가임</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody onKeyPress={(e) => {
-            if (e.key === 'Enter') this.handleSubmit()
-          }}>
+          <ModalBody>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} type={'password'}
                    onChange={({target}) => this.setState({password: target.value})}/>
@@ -151,7 +126,7 @@ class RegisterModal extends Component {
             <Input placeholder={'Class'} type={'number'} onChange={({target}) => this.setState({cls: target.value})}/>
             <Input placeholder={'Number'} type={'number'}
                    onChange={({target}) => this.setState({number: target.value})}/>
-            <Button onClick={this.handleSubmit.bind(this)}>회원가입</Button>
+            <Button>회원가입</Button>
           </ModalBody>
         </Modal>
       </Wrapper>
@@ -159,11 +134,4 @@ class RegisterModal extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {isLogin} = state.auth;
-  return {
-    isLogin
-  }
-}
-
-export default connect(mapStateToProps)(RegisterModal);
+export default RegisterModal;

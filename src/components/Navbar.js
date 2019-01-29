@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import logo from '../assets/images/logo.svg';
-
-import {userActions} from '../actions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -51,11 +48,6 @@ const Item = styled.span`
 
 class Navbar extends Component {
 
-  componentDidMount() {
-    const {dispatch} = this.props;
-    // dispatch(userActions.getUserData(this.props.isLogin));
-  }
-
   render() {
     return (
       <Wrapper className={'navbar'}>
@@ -65,13 +57,10 @@ class Navbar extends Component {
             <span>Planther</span>
           </Brand>
         </Link>
-        {this.props.isLogin ?
-          null:
-          <Menu className={'navbar-menu'}>
-            <Item style={{marginRight: '20px'}} onClick={() => this.event.emit('show-login')}>로그인</Item>
-            <Item onClick={() => this.event.emit('show-register')}>회원가입</Item>
-          </Menu>
-        }
+        <Menu className={'navbar-menu'}>
+          <Item style={{marginRight: '20px'}} onClick={() => this.event.emit('show-login')}>로그인</Item>
+          <Item onClick={() => this.event.emit('show-register')}>회원가입</Item>
+        </Menu>
         <LoginModal/>
         <RegisterModal/>
       </Wrapper>
@@ -79,13 +68,4 @@ class Navbar extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {user} = state.user;
-  const {isLogin} = state.auth;
-  return {
-    isLogin,
-    user
-  }
-}
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;
