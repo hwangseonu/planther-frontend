@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 const Modal = styled.div`
   padding: 30px;
-  width: 570px;
+  width: 540px;
   border-radius: 30px;
   background: #FFF;
 `;
