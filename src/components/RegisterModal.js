@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+import {connect} from 'react-redux';
+import {authAction} from '../actions';
+
 import Loading from "./Loading";
 
 const Wrapper = styled.div`
@@ -106,6 +109,25 @@ class RegisterModal extends Component {
     this.setState({show: false});
   }
 
+  handleSubmit() {
+    const {dispatch} = this.props;
+    const {username, password, name, grade, cls, number} = this.state;
+
+    if (username && password && name && grade && cls && number) {
+      this.setState({loading: true});
+      dispatch(authAction.register(username, password, name, grade, cls, number)).then(res => {
+        this.setState({loading: false});
+        alert("회원가입되었습니다.");
+        window.location.reload();
+      }).catch(err => {
+        this.setState({loading: false});
+        alert("회원가입에 실패했습니다.");
+      })
+    } else {
+      alert("빈칸이 있습니다.");
+    }
+  }
+
   render() {
     return this.state.show ? (
       <Wrapper className={'register-wrapper'} onClick={({target}) => {
@@ -126,7 +148,7 @@ class RegisterModal extends Component {
             <Input placeholder={'Class'} type={'number'} onChange={({target}) => this.setState({cls: target.value})}/>
             <Input placeholder={'Number'} type={'number'}
                    onChange={({target}) => this.setState({number: target.value})}/>
-            <Button>회원가입</Button>
+            <Button onClick={this.handleSubmit.bind(this)}>회원가입</Button>
           </ModalBody>
         </Modal>
       </Wrapper>
@@ -134,4 +156,8 @@ class RegisterModal extends Component {
   }
 }
 
-export default RegisterModal;
+function mapStateToProps() {
+  return {};
+}
+
+export default connect(mapStateToProps)(RegisterModal);
