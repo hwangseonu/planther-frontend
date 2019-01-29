@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
+import cookie from 'react-cookies';
+import axios from 'axios';
 import styled from 'styled-components';
+
+import Loading from './Loading';
 
 const Wrapper = styled.div`
   display: flex;
@@ -82,10 +86,26 @@ const Button = styled.button`
   }
 `;
 
+const Select = styled.select`
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #999;
+  background: #eee;
+  margin-bottom: 20px;
+`;
+
 class AddPlanModal extends Component {
   state = {
     show: false,
-    date: {}
+    loading: false,
+    date: {year: 0, month: 0, day:0},
+    title: '',
+    content: '',
+    type: ''
   };
 
   constructor(props) {
@@ -110,21 +130,62 @@ class AddPlanModal extends Component {
     this.setState({show: false});
   }
 
+  handleSubmit() {
+    const jwt = cookie.load('JWT');
+
+    if (jwt) {
+      const {title, content, type} = this.state;
+      const {year, month, day} = this.state.date;
+
+      if (title && content && type) {
+        this.setState({loading: true});
+        axios.post(`https://planther-api.herokuapp.com/plans`, {
+          title,
+          content,
+          type,
+          year,
+          month,
+          day
+        }, {headers: {Authorization: `Bearer ${jwt}`}}).then(res => {
+          this.setState({loading: false});
+          alert("추가되었습니다.");
+          window.location.reload();
+        }).catch(err => {
+          this.setState({loading: false});
+          alert("오류가 발생했습니다.")
+        })
+      } else {
+        alert("빈칸이 있습니다.");
+      }
+    } else {
+      alert("먼저 로그인해주세요.");
+    }
+  }
+
   render() {
     return (this.state.show ?
-      <Wrapper>
-        <Modal>
-          <ModalHeader>
-            <ModalTitle>일정추가</ModalTitle>
-            <Close className={'fas fa-times'} onClick={this.close.bind(this)}/>
-          </ModalHeader>
-          <ModalBody>
-            <Input placeholder={'Title'}/>
-            <TextArea placeholder={'Content'}/>
-            <Button>추가</Button>
-          </ModalBody>
-        </Modal>
-      </Wrapper> : null
+        <Wrapper>
+          {this.state.loading ? <Loading/> : null}
+          <Modal>
+            <ModalHeader>
+              <ModalTitle>일정추가</ModalTitle>
+              <Close className={'fas fa-times'} onClick={this.close.bind(this)}/>
+            </ModalHeader>
+            <ModalBody onKeyPress={({key}) => {
+              if (key === 'Enter') this.handleSubmit()
+            }}>
+              <Input placeholder={'Title'} onChange={({target}) => this.setState({title: target.value})}/>
+              <TextArea placeholder={'Content'} onChange={({target}) => this.setState({content: target.value})}/>
+              <Select defaultValue={''} onChange={({target}) => this.setState({type: target.value})}>
+                <option value={''} disabled={true} hidden={true}>일정 종류</option>
+                <option value={'assignment'}>과제</option>
+                <option value={'presentation'}>발표</option>
+                <option value={'event'}>행사</option>
+              </Select>
+              <Button onClick={this.handleSubmit.bind(this)}>추가</Button>
+            </ModalBody>
+          </Modal>
+        </Wrapper> : null
     );
   }
 }

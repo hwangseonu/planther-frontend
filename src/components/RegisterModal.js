@@ -139,7 +139,7 @@ class RegisterModal extends Component {
             <ModalTitle>회원가임</ModalTitle>
             <Close className="fas fa-times" onClick={this.close}/>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody onKeyPress={({key}) => {if (key === 'Enter') this.handleSubmit()}}>
             <Input placeholder={'Username'} onChange={({target}) => this.setState({username: target.value})}/>
             <Input placeholder={'Password'} type={'password'}
                    onChange={({target}) => this.setState({password: target.value})}/>
