@@ -22,6 +22,11 @@ const getUserData = () => {
             status: true
           });
           resolve(res);
+        }).catch(err => {
+          // if (err.response.status === 409) {
+          //TODO refresh token
+          // }
+          reject(err);
         })
       } else {
         dispatch({type: types.SET_LOGIN_STATUS, status: false});
