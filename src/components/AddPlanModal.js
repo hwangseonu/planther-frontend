@@ -153,12 +153,14 @@ class AddPlanModal extends Component {
         }).catch(err => {
           this.setState({loading: false});
           alert("오류가 발생했습니다.")
+          window.location.reload();
         })
       } else {
         alert("빈칸이 있습니다.");
       }
     } else {
       alert("먼저 로그인해주세요.");
+      window.location.reload();
     }
   }
 
