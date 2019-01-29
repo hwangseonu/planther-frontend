@@ -36,7 +36,7 @@ class Day extends Component {
       <Wrapper onMouseOver={() => this.setState({hover: true})} onMouseLeave={() => this.setState({hover: false})}>
         <Header>
           <span>{this.props.date.day}</span>
-          {this.state.hover ? <Add className={'hidden fas fa-plus'}/> : null}
+          {this.state.hover ? <Add className={'hidden fas fa-plus'} onClick={() => this.event.emit('show-addplan', this.props.date)}/> : null}
         </Header>
       </Wrapper>
     )

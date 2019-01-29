@@ -83,13 +83,40 @@ const Button = styled.button`
 `;
 
 class AddPlanModal extends Component {
+  state = {
+    show: false,
+    date: {}
+  };
+
+  constructor(props) {
+    super(props);
+    this.show = this.show.bind(this);
+    this.close = this.close.bind(this);
+  }
+
+  componentDidMount() {
+    this.event.on('show-addplan', this.show);
+  }
+
+  componentWillUnmount() {
+    this.event.removeListener('show-addplan', this.show);
+  }
+
+  show(date) {
+    this.setState({show: true, date: date});
+  }
+
+  close() {
+    this.setState({show: false});
+  }
+
   render() {
-    return (
+    return (this.state.show ?
       <Wrapper>
         <Modal>
           <ModalHeader>
             <ModalTitle>일정추가</ModalTitle>
-            <Close className={'fas fa-times'}/>
+            <Close className={'fas fa-times'} onClick={this.close.bind(this)}/>
           </ModalHeader>
           <ModalBody>
             <Input placeholder={'Title'}/>
@@ -97,7 +124,7 @@ class AddPlanModal extends Component {
             <Button>추가</Button>
           </ModalBody>
         </Modal>
-      </Wrapper>
+      </Wrapper> : null
     );
   }
 }

@@ -7,6 +7,8 @@ import Day from '../components/Day';
 
 import utils from '../utils';
 
+import AddPlanModal from '../components/AddPlanModal';
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -112,6 +114,7 @@ class Calendar extends Component {
 
     return (
       <div id={'calendar'}>
+        <AddPlanModal/>
         <Link to={`/calendar/${year}/${month - 1}`}>
           <Prev className={'fas fa-chevron-left'}/>
         </Link>
