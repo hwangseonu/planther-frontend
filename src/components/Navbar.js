@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
+import {connect} from 'react-redux';
+import {userAction, authAction} from '../actions';
+
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import logo from '../assets/images/logo.svg';
@@ -48,6 +51,11 @@ const Item = styled.span`
 
 class Navbar extends Component {
 
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch(userAction.getUserData()).catch(() => {});
+  }
+
   render() {
     return (
       <Wrapper className={'navbar'}>
@@ -57,10 +65,19 @@ class Navbar extends Component {
             <span>Planther</span>
           </Brand>
         </Link>
-        <Menu className={'navbar-menu'}>
-          <Item style={{marginRight: '20px'}} onClick={() => this.event.emit('show-login')}>로그인</Item>
-          <Item onClick={() => this.event.emit('show-register')}>회원가입</Item>
-        </Menu>
+        {this.props.isLogin ?
+          <Menu>
+            <Item style={{marginRight: '20px'}}>{this.props.user.username}</Item>
+            <Item onClick={() => {
+              this.props.dispatch(authAction.logout()).then(() => alert("로그아웃되었습니다."));
+              window.location.reload();
+            }}>로그아웃</Item>
+          </Menu>:
+          <Menu className={'navbar-menu'}>
+            <Item style={{marginRight: '20px'}} onClick={() => this.event.emit('show-login')}>로그인</Item>
+            <Item onClick={() => this.event.emit('show-register')}>회원가입</Item>
+          </Menu>
+        }
         <LoginModal/>
         <RegisterModal/>
       </Wrapper>
@@ -68,4 +85,13 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+  const {user} = state.user;
+  const {isLogin} = state.auth;
+  return {
+    isLogin,
+    user
+  }
+}
+
+export default connect(mapStateToProps)(Navbar);

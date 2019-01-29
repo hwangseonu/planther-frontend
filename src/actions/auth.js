@@ -37,7 +37,7 @@ const register = (username, password, name, grade, cls, number) => {
 const logout = () => {
   return dispatch => {
     return new Promise((resolve) => {
-      cookie.remove('JWT');
+      cookie.remove('JWT', {path: '/'});
       dispatch({
         type: types.SET_LOGIN_STATUS,
         status: false
