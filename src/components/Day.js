@@ -101,7 +101,7 @@ class Day extends Component {
         </Header>
         <Body>
           {this.state.plans.map((plan, i) => (
-            <Plan background={background[plan.type]} key={'plan' + i}><span>{plan.title}</span></Plan>))}
+            <Plan onClick={() => this.event.emit('show-plan', plan)} background={background[plan.type]} key={'plan' + i}><span>{plan.title}</span></Plan>))}
         </Body>
       </Wrapper>
     )

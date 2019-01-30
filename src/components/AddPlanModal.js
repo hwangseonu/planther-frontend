@@ -173,12 +173,10 @@ class AddPlanModal extends Component {
               <ModalTitle>일정추가</ModalTitle>
               <Close className={'fas fa-times'} onClick={this.close.bind(this)}/>
             </ModalHeader>
-            <ModalBody onKeyPress={({key}) => {
-              if (key === 'Enter') this.handleSubmit()
-            }}>
+            <ModalBody>
               <Input placeholder={'Title'} onChange={({target}) => this.setState({title: target.value})}/>
               <TextArea placeholder={'Content'} onChange={({target}) => this.setState({content: target.value})}/>
-              <Select defaultValue={''} onChange={({target}) => this.setState({type: target.value})}>
+              <Select defaultValue={''} onChange={({target}) => this.setState({type: target.value})} onKeyPress={({key}) => {if (key === 'Enter') this.handleSubmit()}}>
                 <option value={''} disabled={true} hidden={true}>일정 종류</option>
                 <option value={'assignment'}>과제</option>
                 <option value={'presentation'}>발표</option>
